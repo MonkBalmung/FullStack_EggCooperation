@@ -19,7 +19,7 @@ package _5_poo.cuenta;
 
 //@author MENESES-FLOREZ
 
-import Entidades.Cuenta;
+//import Entidades.Cuenta;
 import Services.CuentaServicio;
 
 public class _5_POOCuenta
@@ -27,8 +27,9 @@ public class _5_POOCuenta
     public static void main(String[] args)
     {
         CuentaServicio cuentaService = new CuentaServicio();
-        Cuenta cuenta = cuentaService.crearCuenta();
-        cuentaService.menu();
-    }
+        cuentaService.menu();        
+        
+        
+    }//Fin método main
     
-}
+}//Fin de la clase _5_POOCuenta

@@ -25,6 +25,6 @@ public class _1_POO_ClaseLIBRO {
         //Imprimimos atributos del objeto libro
         System.out.println(libro.toString());
         
-    }
+    }//Fin método main
     
-}
+}//Fin clase Libro

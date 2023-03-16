@@ -24,56 +24,68 @@ public class CuentaServicio
     
     public void menu()
     {        
-        CuentaServicio cuentaService = new CuentaServicio();
+        //CuentaServicio cuentaService = new CuentaServicio();
+        //En vez de instanciar el objeto de la misma clase en la clase, podemos usar el "this."
         int opcion;
+        boolean flag = true;
+        while (flag)
+        {
         do {
-            System.out.println("BIENVENIDO A SU BANCO *** ELIGA SU TRANSACCIÓN:\n"
-                    + "1) CONSIGANCIÓN\n"
-                    + "2) RETIRO\n"
-                    + "3) RETIRO RÁPIDO\n"
-                    + "4) CONSULTA DE SALDO\n"
-                    + "5) CONSULTA DE DATOS\n"
-                    + "6) SALIR");
-            opcion = input.nextInt();
-            switch (opcion) {
-                case 1:
-                    cuentaService.ingresarDinero(cuenta);
-                    break;
-                case 2:
-                    cuentaService.retirarDinero(cuenta);
-                    break;
-                case 3:
-                    cuentaService.extraccionRapida(cuenta);
-                    break;
-                case 4:
-                    cuentaService.consultaSaldo(cuenta);
-                    break;
-                case 5:
-                    cuentaService.consultaDatos(cuenta);
-                    break;
-                default:
-                //throw new AssertionError();
+            System.out.print("BIENVENIDO A SU *** BANCO *** ELIGA SU TRANSACCIÓN:\n"
+                    + "1) CREAR CUENTA\n"
+                    + "2) CONSIGANCIÓN\n"
+                    + "3) RETIRO\n"
+                    + "4) RETIRO RÁPIDO\n"
+                    + "5) CONSULTA DE SALDO\n"
+                    + "6) CONSULTA DE DATOS\n"
+                    + "7) SALIR\n"
+                    + "Ingrese opción:");
+            opcion = input.nextInt(); 
+            if (opcion <1 || opcion > 7) {
+                System.out.println("Ha ingresado una opción inválida. Intente de nuevo:");
             }
-        } while (opcion != 6);     
+        } while (opcion <1 || opcion > 7);  
+        switch (opcion) {
+            case 1:
+                this.crearCuenta();
+                break;
+            case 2:
+                this.ingresarDinero(cuenta);
+                break;
+            case 3:
+                this.retirarDinero(cuenta);
+                break;
+            case 4:
+                this.extraccionRapida(cuenta);
+                break;
+            case 5:
+                this.consultaSaldo(cuenta);
+                break;
+            case 6:
+                this.consultaDatos(cuenta);
+                break;
+            case 7:
+                flag = false;
+                break;
+            }
+        }       
     }
-    public Cuenta crearCuenta()
+    public void crearCuenta()
     {       
-        System.out.println("BIENVENIDO A SU BANCO *** MÓDULO APERTURA DE CUENTA");
+        cuenta.setSaldoActual(0);
+        System.out.println("*** MÓDULO APERTURA DE CUENTA ***");
         System.out.println("Ingrese por favor su Número de Identificación Personal:");
         cuenta.setClienteDNI(input.nextLong());
         
         System.out.println("Ingrese por favor su número de cuenta, sin guiones:");
         cuenta.setNumeroCuenta(input.nextInt());        
         
-        return cuenta;
+        
     }
     public void ingresarDinero(Cuenta cuenta)
     {
-        double saldoActual;
         System.out.println("Ingrese el monto a consignar en la cuenta ["+cuenta.getNumeroCuenta()+"]");
-        saldoActual = input.nextDouble();
-        saldoActual += cuenta.getSaldoActual();
-        cuenta.setSaldoActual(saldoActual);
+        cuenta.setSaldoActual(cuenta.getSaldoActual()+input.nextDouble());
     }
     public void retirarDinero(Cuenta cuenta)
     {
@@ -82,8 +94,16 @@ public class CuentaServicio
         System.out.println("Ingrese el monto a retirar en la cuenta ["+cuenta.getNumeroCuenta()+"]");
         retiro = input.nextDouble();
         saldoActual -= retiro;
-        System.out.println("Entregando el monto $"+retiro);
-        cuenta.setSaldoActual(saldoActual);
+        if ( saldoActual < 0 )
+        {
+            System.out.println("NO TIENE FONDOS SUFICIENTES saldo:$"+cuenta.getSaldoActual());
+        }
+        else
+        {
+            System.out.println("Entregando el monto $" + retiro);
+            cuenta.setSaldoActual(saldoActual);
+        }
+        
     }
     public void extraccionRapida(Cuenta cuenta)
     {
@@ -95,19 +115,24 @@ public class CuentaServicio
         opcion = input.next().toUpperCase().charAt(0);
         if (opcion == 'S') {
             retiro = saldoActual * 0.20;
-            saldoActual -= retiro;
-            System.out.println("Entregando el monto $" + retiro);
-            cuenta.setSaldoActual(saldoActual);
+            System.out.println("El monto a entregar es $"+retiro+". ¿Desea constinuar? S/N");
+            opcion = input.next().toUpperCase().charAt(0);
+            if (opcion == 'S') {
+                saldoActual -= retiro;
+                System.out.println("Entregando el monto $" + retiro);
+                cuenta.setSaldoActual(saldoActual);
+            }
+            else
+            {
+                System.out.println("VUELTA EL MENÚ PRINCIPAL");
+            }            
         }
-        else
-        {
-            System.out.println("VUELTA EL MENÚ PRINCIPAL");
-        }
+        
         
     }
     public void consultaSaldo(Cuenta cuenta)
     {
-        System.out.println(cuenta.toString());
+        System.out.println("El saldo actual de la cuenta ["+cuenta.getNumeroCuenta()+"] es: $"+cuenta.getSaldoActual());
     }
     public void consultaDatos(Cuenta cuenta)
     {
