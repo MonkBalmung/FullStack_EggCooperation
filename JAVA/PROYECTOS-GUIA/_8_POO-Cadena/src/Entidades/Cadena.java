@@ -34,7 +34,7 @@ public class Cadena
     }
 
     public void setFrase(String frase) {
-        this.frase = frase;
+        this.frase = frase.toLowerCase();
     }
 
     public void setFraseLength(String frase) {
