@@ -45,7 +45,7 @@ public class MathematicsServices
         }
         return powerOf;
     }//Fin metodo calcularPotencia()
-    public double retrieveRootof(Mathematics operation)
+    public static double retrieveRootof(Mathematics operation)
     {
         double rootOf = 0;
         if ( operation.getNumberA() > operation.getNumberB() ) {

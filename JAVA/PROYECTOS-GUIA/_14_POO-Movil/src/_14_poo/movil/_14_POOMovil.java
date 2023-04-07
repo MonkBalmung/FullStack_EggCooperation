@@ -7,7 +7,7 @@ package _14_poo.movil;
 
 //@author MENESES-FLOREZ */
 
-import Entities.Mobile;
+//import Entities.Mobile;
 import Services.MobileService;
 
 public class _14_POOMovil 
@@ -15,7 +15,7 @@ public class _14_POOMovil
     public static void main(String[] args)
     {
         MobileService mobileService = new MobileService();
-        Mobile mobile = mobileService.createObject();
+        mobileService.menu();
         
     }
     

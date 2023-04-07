@@ -11,6 +11,10 @@ public class Mathematics
     //Atributes
     private double numberA;
     private double numberB;
+    /*Declaracion de constante, 
+    private final double PI = Math.PI;*/
+    /*static final me circunscribe a su uso en la misma clase en la que se declara
+    private static final double PI = Math.PI;*/
     
     //Contructors
     public Mathematics() {}

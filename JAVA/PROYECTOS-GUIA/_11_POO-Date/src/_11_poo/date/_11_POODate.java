@@ -12,6 +12,7 @@ package _11_poo.date;
 
 //@author MENESES-FLOREZ
 
+import java.text.SimpleDateFormat;//Formato fecha
 import java.util.Date;
 import java.util.Scanner;
 
@@ -32,12 +33,16 @@ public class _11_POODate
         System.out.print("Ingrese por favor el mes:");
         mes = input.nextInt();
         mes--;
+        
         System.out.print("Ingrese por favor el año:");
         anio = input.nextInt();
         anio -= 1900;
-        Date date = new Date(anio, mes, dia);
         
-        System.out.println("La fecha ingresada es: "+date);
+        Date date = new Date(anio, mes, dia);
+        System.out.println(new SimpleDateFormat("dd-MM-yyyy").format(date));
+        System.out.println("");
+        System.out.printf("%s %tY-%<tm-%<td%n","Representación completa de la fecha:",date);
+        //System.out.println(String.format("La fecha ingresada es: %dd / %dd / %dd",date.getDay(), date.getMonth(), date.getYear()));
         
         Date currentDate = new Date();
         System.out.println("La fecha actual es: "+currentDate);

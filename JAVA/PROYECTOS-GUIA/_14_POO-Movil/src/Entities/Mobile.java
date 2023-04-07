@@ -88,7 +88,7 @@ public class Mobile
 
     @Override
     public String toString() {
-        return "Mobile{" + "marca=" + marca + ", precio=" + precio + ", modelo=" + modelo + ", memoriaRam=" + memoriaRam + ", almacenamiento=" + almacenamiento + '}';
+        return "REGISTRO: {" + "MARCA: " + marca + ", PRECIO: $" + precio + ", MODELO: " + modelo + ", RAM: " + memoriaRam + "Gb, MEMORIA: " + almacenamiento + '}';
     }
     
     
