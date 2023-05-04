@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="main.java.Entities">
+  <ClassDiagramComponents>
+    <Class name="Cliente" package="Entities" visibility="public" xPosition="922.0" yPosition="232.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="lastName" type="String" visibility="private"/>
+        <Field name="age" type="String" visibility="private"/>
+        <Field name="idNumber" type="String" visibility="private"/>
+        <Field name="mascota" type="Mascota" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="lastName"/>
+          <Argument type="String" name="age"/>
+          <Argument type="String" name="idNumber"/>
+          <Argument type="Mascota" name="mascota"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="setName" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="getLastName" returnType="String" visibility="public"/>
+        <Method name="setLastName" returnType="void" visibility="public">
+          <Argument type="String" name="lastName"/>
+        </Method>
+        <Method name="getAge" returnType="String" visibility="public"/>
+        <Method name="setAge" returnType="void" visibility="public">
+          <Argument type="String" name="age"/>
+        </Method>
+        <Method name="getIdNumber" returnType="String" visibility="public"/>
+        <Method name="setIdNumber" returnType="void" visibility="public">
+          <Argument type="String" name="idNumber"/>
+        </Method>
+        <Method name="getMascota" returnType="Mascota" visibility="public"/>
+        <Method name="setMascota" returnType="void" visibility="public">
+          <Argument type="Mascota" name="mascota"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Mascota" package="Entities" visibility="public" xPosition="964.0" yPosition="441.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="biologicFamily" type="String" visibility="private"/>
+        <Field name="race" type="String" visibility="private"/>
+        <Field name="age" type="String" visibility="private"/>
+        <Field name="sexo" type="String" visibility="private"/>
+        <Field name="tamanio" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="biologicFamily"/>
+          <Argument type="String" name="race"/>
+          <Argument type="String" name="age"/>
+          <Argument type="String" name="sexo"/>
+          <Argument type="String" name="tamanio"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="setName" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="getBiologicFamily" returnType="String" visibility="public"/>
+        <Method name="setBiologicFamily" returnType="void" visibility="public">
+          <Argument type="String" name="biologicFamily"/>
+        </Method>
+        <Method name="getRace" returnType="String" visibility="public"/>
+        <Method name="setRace" returnType="void" visibility="public">
+          <Argument type="String" name="race"/>
+        </Method>
+        <Method name="getAge" returnType="String" visibility="public"/>
+        <Method name="setAge" returnType="void" visibility="public">
+          <Argument type="String" name="age"/>
+        </Method>
+        <Method name="getSexo" returnType="String" visibility="public"/>
+        <Method name="setSexo" returnType="void" visibility="public">
+          <Argument type="String" name="sexo"/>
+        </Method>
+        <Method name="getTamanio" returnType="String" visibility="public"/>
+        <Method name="setTamanio" returnType="void" visibility="public">
+          <Argument type="String" name="tamanio"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Tienda" package="Entities" visibility="public" xPosition="1525.0" yPosition="359.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="NIF" type="String" visibility="private"/>
+        <Field name="listaClientes" type="List&lt;Cliente&gt;" visibility="private"/>
+        <Field name="listaMascotas" type="List&lt;Mascota&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="List&lt;Cliente&gt;" name="listaClientes"/>
+          <Argument type="List&lt;Mascota&gt;" name="listaMascotas"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="setName" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="getNIF" returnType="String" visibility="public"/>
+        <Method name="setNIF" returnType="void" visibility="public">
+          <Argument type="String" name="NIF"/>
+        </Method>
+        <Method name="getListaClientes" returnType="List&lt;Cliente&gt;" visibility="public"/>
+        <Method name="setListaClientes" returnType="void" visibility="public">
+          <Argument type="List&lt;Cliente&gt;" name="listaClientes"/>
+        </Method>
+        <Method name="getListaMascotas" returnType="List&lt;Mascota&gt;" visibility="public"/>
+        <Method name="setListaMascotas" returnType="void" visibility="public">
+          <Argument type="List&lt;Mascota&gt;" name="listaMascotas"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="listaMascotas" source="Entities.Tienda" target="Entities.Mascota" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Mascota&gt;"/>
+    <UseRelation source="Entities.Tienda" target="Entities.Mascota" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="listaClientes" source="Entities.Tienda" target="Entities.Cliente" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Cliente&gt;"/>
+    <HasRelation name="mascota" source="Entities.Cliente" target="Entities.Mascota" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Entities.Tienda" target="Entities.Cliente" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Entities.Cliente" target="Entities.Mascota" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
